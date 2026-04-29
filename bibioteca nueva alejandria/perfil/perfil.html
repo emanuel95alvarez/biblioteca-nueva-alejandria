@@ -1,0 +1,116 @@
+<!-- 
+    PÁGINA: perfil.html
+    PARA QUÉ SIRVE: Dashboard personal del usuario para ver sus libros.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imagen/png" href="../imagenes/buho_logo__1_-removebg-preview.png">
+    <title>Mi Perfil | Biblioteca Nueva Alejandría</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- [ ESTILOS COMPARTIDOS ] -->
+    <link rel="stylesheet" href="../principal/principal.css">
+    <!-- [ ESTILOS PROPIOS DEL PERFIL ] -->
+    <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body class="modo-oscuro"> <!-- Por defecto oscuro para el perfil galáctico -->
+
+    <header id="header">
+        <div class="contenedor-izquierda">
+            <button class="boton-menu" id="abrir-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logotipo" onclick="window.location.href='../principal/principal.html'">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img">
+                <span>Nueva Alejandría</span>
+            </div>
+        </div>
+        <div class="contenedor-derecha">
+            <button class="boton-selector-tema" id="boton-tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú Lateral -->
+    <nav id="menu-lateral" class="menu-lateral">
+        <div class="cabecera-menu">
+            <div class="logotipo">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img"
+                    style="height: 35px;">
+                <span>Menú</span>
+            </div>
+            <button id="cerrar-menu" class="boton-cerrar-menu">&times;</button>
+        </div>
+        <div class="enlaces-menu">
+            <a href="../principal/principal.html"><i class="fas fa-star"></i> Inicio</a>
+            <a href="../vender/vender.html"><i class="fas fa-tag"></i> Vender</a>
+            <a href="#" class="activo"><i class="fas fa-user-circle"></i> Mi Perfil</a>
+        </div>
+    </nav>
+    <div id="overlay-menu" class="overlay-menu"></div>
+
+    <main class="contenedor-perfil">
+        <!-- Tarjeta Usuario -->
+        <section class="tarjeta-usuario">
+            <div class="avatar-perfil" id="userAvatar">🦉</div>
+            <div class="info-usuario">
+                <h1 id="userName">Cargando...</h1>
+                <p id="userEmail">correo@ejemplo.com</p>
+                <p id="userDate" style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.7;">Miembro desde: --/--/----
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="grid-stats">
+            <div class="stat-card">
+                <i class="fas fa-book"></i>
+                <span class="numero" id="statLibros">0</span>
+                <span class="etiqueta">Libros Publicados</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <span class="numero" id="statVentas">0</span>
+                <span class="etiqueta">Ventas Totales</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-award"></i>
+                <span class="numero">Novato</span>
+                <span class="etiqueta">Rango de Lector</span>
+            </div>
+        </section>
+
+        <!-- Gestión -->
+        <section class="seccion-gestion">
+            <h2>Mis Libros en Venta</h2>
+            <div class="mis-libros-grid" id="misLibrosContenedor">
+                <!-- Se llena con JS -->
+            </div>
+        </section>
+
+        <!-- Zona de Peligro -->
+        <section class="zona-peligro">
+            <h3>Zona de Peligro</h3>
+            <p style="color: var(--texto-tenue); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                ete boton reiniciara el local storage osea eliminara la memoria local del navegador, por eso peligro
+                jshsjakslsld
+            </p>
+            <button class="btn-reset-db" onclick="reiniciarTodaLaApp()">
+                <i class="fas fa-trash-alt"></i> Borrar Todo y Reiniciar Web
+            </button>
+        </section>
+    </main>
+
+    <script src="../global.js"></script>
+    <script src="perfil.js"></script>
+</body>
+
+</html>

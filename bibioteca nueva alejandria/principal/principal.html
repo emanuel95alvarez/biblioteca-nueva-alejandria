@@ -1,0 +1,160 @@
+<!-- 
+    PÁGINA: principal.html (INICIO)
+    PARA QUÉ SIRVE: Es la puerta de entrada. Muestra el catálogo y permite comprar.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imagen/png" href="../imagenes/buho_logo__1_-removebg-preview.png">
+
+    <title>Biblioteca Nueva Alejandría | Libros Únicos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="principal.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="contenedor-izquierda">
+            <button class="boton-menu" id="abrir-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logotipo">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img">
+                <span>Nueva Alejandría</span>
+            </div>
+        </div>
+
+        <div class="contenedor-centro">
+            <div class="contenedor-busqueda">
+                <i class="fas fa-search"
+                    style="position: absolute; left: 1.2rem; top: 50%; translate: 0 -50%; color: var(--texto-tenue);"></i>
+                <input type="text" placeholder="Busca por título, autor o género...">
+            </div>
+
+            <div class="desplegable">
+                <a href="#">Categorías <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <div class="contenido-desplegable">
+                    <a href="#">Todas</a>
+                    <a href="#">Ficción</a>
+                    <a href="#">Ciencia</a>
+                    <a href="#">Misterio</a>
+                    <a href="#">Historia</a>
+                    <a href="#">Poesía</a>
+                    <a href="#">Filosofía</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-derecha">
+            <div class="boton-carrito" id="abrir-carrito">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="contador-carrito">0</span>
+                <div class="visualizador-total" id="precio-total">$0</div>
+            </div>
+
+            <button class="boton-selector-tema" id="boton-tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú Lateral -->
+    <nav id="menu-lateral" class="menu-lateral">
+        <div class="cabecera-menu">
+            <div class="logotipo" style="font-size: 1.2rem;">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img"
+                    style="height: 35px;">
+                <span>Menú</span>
+            </div>
+            <button id="cerrar-menu" class="boton-cerrar-menu">&times;</button>
+        </div>
+        <div class="enlaces-menu">
+            <a href="principal.html" class="activo"><i class="fas fa-star"></i> Inicio</a>
+            <a href="../vender/vender.html"><i class="fas fa-tag"></i> Vender</a>
+            <a href="../login/login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+        </div>
+    </nav>
+    <div id="overlay-menu" class="overlay-menu"></div>
+
+    <main>
+        <section class="presentacion">
+            <div class="contenido-presentacion">
+                <span class="bienvenida">¡Bienvenido a la Biblioteca Nueva Alejandría!</span>
+                <h1>Descubre mundos ocultos en cada página</h1>
+                <p>proyecto para la materia de produccion multimedial esta es una pagina provisional simula las
+                    funciones de una pagina de verdad .</p>
+                <div class="botones-presentacion">
+
+                    <a href="../vender/vender.html" class="btn-principal btn-secundario">Vender mis Libros</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="seccion-libros">
+            <div class="titulo-seccion">
+                <h2>Catálogo de libros disponibles</h2>
+            </div>
+            <div class="cuadricula-libros" id="contenedor-libros">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logotipo">Nueva Alejandría</div>
+        <div class="redes-sociales">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p style="color: var(--texto-tenue); font-size: 0.8rem;">&copy; 2026 Biblioteca Nueva Alejandría. Cultivando la
+            mente hacia el infinito.</p>
+    </footer>
+
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal">
+        <div class="contenido-modal">
+            <div class="cabecera-modal">
+                <h2>Tu Carrito</h2>
+                <button class="cerrar-modal" id="cerrar-carrito">&times;</button>
+            </div>
+            <div id="lista-carrito" class="lista-carrito">
+                <!-- Se llenará dinámicamente con JS -->
+                <p class="carrito-vacio">no has seleccionado ningún libro</p>
+            </div>
+            <div class="pie-modal">
+                <div class="total-compra">
+                    <span>Total:</span>
+                    <span id="total-modal">$0</span>
+                </div>
+                <button id="btn-comprar-ahora" class="btn-principal" style="width: 100%;">Finalizar Compra</button>
+
+                <!-- Sección de métodos de pago (oculta inicialmente) -->
+                <div id="seccion-pagos" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--borde-cristal); padding-top: 1.5rem;">
+                    <p style="text-align: center; font-size: 0.9rem; margin-bottom: 1rem; color: var(--texto-tenue);">
+                        Selecciona tu método de pago seguro:
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <button onclick="simularPago('bancolombia')" style="flex: 1; background: #fd0; color: #000; border: none; padding: 0.8rem; border-radius: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <i class="fas fa-university"></i> Bancolombia
+                        </button>
+                        <button onclick="simularPago('paypal')" style="flex: 1; background: #0070ba; color: #fff; border: none; padding: 0.8rem; border-radius: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <i class="fab fa-paypal"></i> PayPal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../global.js"></script>
+    <script src="principal.js"></script>
+</body>
+
+</html>

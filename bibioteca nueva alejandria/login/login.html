@@ -1,0 +1,156 @@
+<!-- 
+    PÁGINA: login.html
+    PARA QUÉ SIRVE: Pantalla para iniciar sesión o registrarse.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imagen/png" href="../imagenes/buho_logo__1_-removebg-preview.png">
+
+    <title>Iniciar Sesión | Biblioteca Nueva Alejandría</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reutilizamos los estilos base de principal.css para las variables y el header -->
+    <link rel="stylesheet" href="../principal/principal.css">
+    <!-- Estilos específicos del Login -->
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="contenedor-izquierda">
+            <button class="boton-menu" id="abrir-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logotipo" onclick="window.location.href='../principal/principal.html'">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img">
+                <span>Nueva Alejandría</span>
+            </div>
+        </div>
+
+        <div class="contenedor-derecha">
+            <button class="boton-selector-tema" id="boton-tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú Lateral -->
+    <nav id="menu-lateral" class="menu-lateral">
+        <div class="cabecera-menu">
+            <div class="logotipo" style="font-size: 1.2rem;">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img"
+                    style="height: 35px;">
+                <span>Menú</span>
+            </div>
+            <button id="cerrar-menu" class="boton-cerrar-menu">&times;</button>
+        </div>
+
+        <div class="enlaces-menu">
+            <a href="../principal/principal.html"><i class="fas fa-star"></i> Inicio</a>
+            <a href="../vender/vender.html"><i class="fas fa-tag"></i> Vender</a>
+            <a href="#" class="activo"><i class="fas fa-user"></i> Iniciar Sesión</a>
+        </div>
+    </nav>
+    <div id="overlay-menu" class="overlay-menu"></div>
+
+    <main class="contenedor-login">
+        <div class="tarjeta-login">
+            <div class="cabecera-login">
+                <span class="icono-buho-login">
+                    <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo">
+                </span>
+                <h1>Bienvenido</h1>
+                <p>Accede a tu biblioteca personal</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab activo" onclick="cambiarTab('login')">Iniciar sesión</button>
+                <button class="tab" onclick="cambiarTab('registro')">Crear cuenta</button>
+            </div>
+
+            <div class="mensaje" id="mensajeEstado"></div>
+
+            <!-- Formulario Login -->
+            <div class="formulario visible" id="formLogin">
+                <div class="grupo-campo">
+                    <label for="emailLogin">Correo electrónico</label>
+                    <div class="envoltorio-input">
+                        <i class="fa-regular fa-envelope icono-campo"></i>
+                        <input type="email" id="emailLogin" placeholder="tu@correo.com">
+                    </div>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="passwordLogin">Contraseña</label>
+                    <div class="envoltorio-input">
+                        <i class="fa-solid fa-lock icono-campo"></i>
+                        <input type="password" id="passwordLogin" placeholder="••••••••">
+                        <button class="btn-ver-contrasena" type="button"
+                            onclick="toggleContrasena('passwordLogin', this)">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="btn-submit" onclick="iniciarSesion()">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar sesión
+                </button>
+
+                <div class="divisor">o continúa con</div>
+
+                <div class="botones-sociales">
+                    <a href="#" class="btn-social"><i class="fa-brands fa-google"></i> Google</a>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                </div>
+            </div>
+
+            <!-- Formulario Registro -->
+            <div class="formulario" id="formRegistro">
+                <div class="grupo-campo">
+                    <label for="nombreReg">Nombre completo</label>
+                    <div class="envoltorio-input">
+                        <i class="fa-regular fa-user icono-campo"></i>
+                        <input type="text" id="nombreReg" placeholder="Tu nombre">
+                    </div>
+                </div>
+                <div class="grupo-campo">
+                    <label for="emailReg">Correo electrónico</label>
+                    <div class="envoltorio-input">
+                        <i class="fa-regular fa-envelope icono-campo"></i>
+                        <input type="email" id="emailReg" placeholder="tu@correo.com">
+                    </div>
+                </div>
+                <div class="grupo-campo">
+                    <label for="passwordReg">Contraseña</label>
+                    <div class="envoltorio-input">
+                        <i class="fa-solid fa-lock icono-campo"></i>
+                        <input type="password" id="passwordReg" placeholder="Mínimo 6 caracteres">
+                        <button class="btn-ver-contrasena" type="button"
+                            onclick="toggleContrasena('passwordReg', this)">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn-submit" onclick="registrar()">
+                    <i class="fa-solid fa-user-plus"></i> Crear cuenta
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Biblioteca Nueva Alejandría · <a href="#">Términos</a> · <a href="#">Privacidad</a>
+    </footer>
+
+    <script src="../global.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>

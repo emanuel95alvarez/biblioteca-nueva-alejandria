@@ -1,0 +1,309 @@
+/* Estilos específicos para la tarjeta de login que no están en principal.css */
+.contenedor-login {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    position: relative;
+    z-index: 1;
+    min-height: 80vh;
+}
+
+.tarjeta-login {
+    width: 100%;
+    max-width: 440px;
+    background: var(--cristal);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--borde-cristal);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--sombra), 0 0 60px rgba(139, 92, 246, 0.08);
+    animation: aparecer 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    color: var(--texto-principal);
+}
+
+.modo-claro .tarjeta-login {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cabecera-login {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.icono-buho-login img {
+    height: 70px;
+    margin-bottom: 1rem;
+    animation: balancear 4s ease-in-out infinite;
+    transition: var(--transicion);
+    /* Hacerlo blanco por defecto (para modo oscuro) */
+    filter: brightness(0) invert(1);
+}
+
+.modo-claro .icono-buho-login img {
+    /* Quitar el efecto blanco en modo claro para que se vea oscuro */
+    filter: none;
+}
+
+@keyframes balancear {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+.cabecera-login h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--texto-principal);
+}
+
+.cabecera-login p {
+    color: var(--texto-tenue);
+    font-size: 0.9rem;
+}
+
+.modo-claro .cabecera-login h1 {
+    color: #111827;
+}
+
+.tabs {
+    display: flex;
+    background: var(--fondo-principal);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 1.75rem;
+    border: 1px solid var(--borde-cristal);
+}
+
+.tab {
+    flex: 1;
+    padding: 0.6rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transicion);
+    color: var(--texto-tenue);
+    border: none;
+    background: transparent;
+}
+
+.tab.activo {
+    background: var(--color-primario);
+    color: white;
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.4);
+}
+
+.formulario {
+    display: none;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.formulario.visible {
+    display: flex;
+    animation: entrar 0.3s ease both;
+}
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.grupo-campo label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--texto-tenue);
+}
+
+.modo-claro .grupo-campo label {
+    color: #374151;
+}
+
+.envoltorio-input {
+    position: relative;
+}
+
+.envoltorio-input i.icono-campo {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-tenue);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.envoltorio-input input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.8rem;
+    background: var(--fondo-principal);
+    border: 1px solid var(--borde-cristal);
+    border-radius: 10px;
+    color: var(--texto-principal);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transicion);
+}
+
+.envoltorio-input input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.modo-claro .envoltorio-input input {
+    background: white;
+    color: #111827;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-ver-contrasena {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--texto-tenue);
+    cursor: pointer;
+}
+
+.fila-opciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+}
+
+.olvide-contrasena {
+    color: var(--color-acento);
+    text-decoration: none;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-primario-oscuro));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+}
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--texto-tenue);
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+}
+
+.modo-claro .divisor {
+    color: #6b7280;
+}
+
+.divisor::before,
+.divisor::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--borde-cristal);
+}
+
+.botones-sociales {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-social {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    background: var(--fondo-principal);
+    border: 1px solid var(--borde-cristal);
+    border-radius: 10px;
+    color: var(--texto-principal);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transicion);
+}
+
+.btn-social:hover {
+    border-color: var(--color-primario);
+    background: rgba(139, 92, 246, 0.07);
+}
+
+.modo-claro .btn-social {
+    background: white;
+    color: #374151;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.mensaje {
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    display: none;
+    margin-bottom: 1rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mensaje.error {
+    background: rgba(153, 27, 27, 0.2);
+    color: #fca5a5;
+    display: flex;
+}
+
+.mensaje.exito {
+    background: rgba(5, 150, 105, 0.2);
+    color: #6ee7b7;
+    display: flex;
+}

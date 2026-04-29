@@ -1,0 +1,155 @@
+<!-- 
+    PÁGINA: vender.html
+    PARA QUÉ SIRVE: Formulario para que los usuarios publiquen sus libros.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imagen/png" href="../imagenes/buho_logo__1_-removebg-preview.png">
+
+    <title>Vender Libro | Biblioteca Nueva Alejandría</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reutilizamos los estilos base de principal.css -->
+    <link rel="stylesheet" href="../principal/principal.css">
+    <!-- Estilos específicos para esta página -->
+    <link rel="stylesheet" href="vender.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="contenedor-izquierda">
+            <button class="boton-menu" id="abrir-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logotipo" onclick="window.location.href='../principal/principal.html'">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img">
+                <span>Nueva Alejandría</span>
+            </div>
+        </div>
+
+        <div class="contenedor-derecha">
+            <div class="boton-carrito" id="abrir-carrito-vender" onclick="window.location.href='../principal/principal.html#modal-carrito'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="contador-carrito">0</span>
+            </div>
+
+            <button class="boton-selector-tema" id="boton-tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú Lateral (Copiado de principal.html) -->
+    <nav id="menu-lateral" class="menu-lateral">
+        <div class="cabecera-menu">
+            <div class="logotipo" style="font-size: 1.2rem;">
+                <img src="../imagenes/buho_logo__1_-removebg-preview.png" alt="Logo" class="logotipo-img" style="height: 35px;">
+                <span>Menú</span>
+            </div>
+            <button id="cerrar-menu" class="boton-cerrar-menu">&times;</button>
+        </div>
+        
+        <div class="enlaces-menu">
+            <a href="../principal/principal.html"><i class="fas fa-star"></i> Inicio</a>
+            <a href="#" class="activo"><i class="fas fa-tag"></i> Vender</a>
+            <a href="../login/login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+        </div>
+    </nav>
+    <div id="overlay-menu" class="overlay-menu"></div>
+
+    <main class="contenedor-vender">
+        <section class="encabezado-vender">
+            <h1>Publica tu libro</h1>
+            <p>Convierte tus historias en oportunidades. Llena los detalles para poner tu libro a disposición de la comunidad universitaria.</p>
+        </section>
+
+        <section class="seccion-formulario">
+            <form id="formulario-vender" class="formulario-premium">
+                <div class="cuadricula-formulario">
+                    <!-- Previsualización de Imagen -->
+                    <div class="contenedor-foto">
+                        <label for="input-foto" class="label-foto" id="drop-area">
+                            <input type="file" id="input-foto" accept="image/*" hidden>
+                            <div id="vista-previa" class="vista-previa">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Sube la portada</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Campos de Texto -->
+                    <div class="campos-texto">
+                        <div class="grupo-input">
+                            <label>Título del Libro</label>
+                            <input type="text" id="titulo" placeholder="Ej: El Laberinto de Cristal" required>
+                        </div>
+                        
+                        <div class="grupo-input">
+                            <label>Autor</label>
+                            <input type="text" id="autor" placeholder="Nombre del autor" required>
+                        </div>
+
+                        <div class="fila-input">
+                            <div class="grupo-input">
+                                <label>Precio (COP)</label>
+                                <input type="number" id="precio" placeholder="0" required>
+                            </div>
+                            <div class="grupo-input">
+                                <label>Categoría</label>
+                                <select id="categoria" required>
+                                    <option value="" disabled selected>Selecciona</option>
+                                    <option value="Ficción">Ficción</option>
+                                    <option value="Ciencia">Ciencia</option>
+                                    <option value="Misterio">Misterio</option>
+                                    <option value="Historia">Historia</option>
+                                    <option value="Poesía">Poesía</option>
+                                    <option value="Filosofía">Filosofía</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grupo-input">
+                            <label>Breve Reseña</label>
+                            <textarea id="resena" rows="4" placeholder="Cuéntanos un poco sobre de qué trata el libro..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pie-formulario">
+                    <button type="submit" class="btn-principal" id="btn-publicar">
+                        <i class="fas fa-paper-plane"></i> Publicar Libro
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logotipo">Nueva Alejandría</div>
+        <div class="redes-sociales">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p style="color: var(--texto-tenue); font-size: 0.8rem;">&copy; 2026 Biblioteca Nueva Alejandría. Cultivando la
+            mente hacia el infinito.</p>
+    </footer>
+
+    <!-- Notificación de éxito -->
+    <div id="notificacion" class="notificacion">
+        <i class="fas fa-check-circle"></i>
+        <span>¡Libro publicado con éxito!</span>
+    </div>
+
+    <script src="../global.js"></script>
+    <script src="vender.js"></script>
+</body>
+
+</html>
